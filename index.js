@@ -12,22 +12,24 @@ function passwordGenerator(length, upperCase, lowerCase, numbers, symbols){
     allowedChars += numbers ? numberChar: "";
     allowedChars += symbols ? symbolChar: "";
 
-    if(length<=6){
-        return`(password should be atleast 6 digits long)`;
+    if(length<=4){
+        return`(password should be atleast 4 digits long)`;
     }
     if(allowedChars.length===0){
         return"Select at least one character type";
     }
     for(let i=0; i<length;i++){
-        
+        const randomIndex=Math.floor(Math.random()*allowedChars.length)
+        password+=allowedChars[randomIndex];
     }
+    return password;
 }
 
-const passwordLength=10;
+const passwordLength=8;
 const upperCase=true;
-const lowerCase=false;
-const numbers=false;
-const symbols=false;
+const lowerCase=true;
+const numbers=true;
+const symbols=true ;
 
 const password= passwordGenerator(passwordLength, upperCase, lowerCase, numbers, symbols);
 
